@@ -1,0 +1,36 @@
+{
+    "$shcema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "title": "Freedom",
+    "type": "object",
+    "description": "Data of freedom from database.",
+    "required": [ "Year", 
+        "Country"
+    ],
+    "properties": {
+        "Year": {
+            "type": "integer"
+        },
+        "ISO_Code": {
+            "type": "string"
+        },
+        "Country": {
+            "type": "string"
+        },
+        "PERSONAL_FREEDOM_Score": {
+            "type": "number"
+        },
+        "ECONOMIC_FREEDOM_Score": {
+            "type": "number"
+        },
+        "HUMAN_FREEDOM_Score": {
+            "type": "number"
+        },
+        "HUMAN_FREEDOM_Rank": {
+            "type": "string"
+        },
+        "HUMAN_FREEDOM_Quartile": {
+            "type": "string"
+        }
+    }
+}

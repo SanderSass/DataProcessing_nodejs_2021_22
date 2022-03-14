@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="https://www.w3schools.com"
+xmlns="https://www.w3schools.com"
+elementFormDefault="qualified">
+
+    <xs:element name="Country">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Region">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Population">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Area_sq_mi">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Pop_Density_per_sq_mi">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Coastline_coast_area_ratio">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Net_migration">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Infant_mortality_per_1000_births">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="GDP_per_capita">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Literacy">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Phones_per_1000">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Arable">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Crops">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Other">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Climate">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Birthrate">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Deathrate">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Agriculture">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Industry">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Service">
+        <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+</xs:schema>

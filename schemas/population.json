@@ -1,0 +1,67 @@
+{
+    "$shcema": "http://json-schema.org/draft-06/schema#",
+    "title": "Population",
+    "type": "object",
+    "properties": {
+        "Country": {
+            "type": "string"
+        },
+        "Region": {
+            "type": "string"
+        },
+        "Population": {
+            "type": "integer"
+        },
+        "Area_sq_mi": {
+            "type": "integer"
+        },
+        "Pop_Density_per_sq_mi": {
+            "type": "number"
+        },
+        "Coastline_coast_area_ratio": {
+            "type": "number"
+        },
+        "Net_migration": {
+            "type": "string"
+        },
+        "Infant_mortality_per_1000_births": {
+            "type": "number"
+        },
+        "GDP_per_capita": {
+            "type": "integer"
+        },
+        "Literacy": {
+            "type": "number"
+        },
+        "Phones_per_1000": {
+            "type": "number"
+        },
+        "Arable": {
+            "type": "string"
+        },
+        "Crops": {
+            "type": "string"
+        },
+        "Other": {
+            "type": "number"
+        },
+        "Climate": {
+            "type": "string"
+        },
+        "Birthrate": {
+            "type": "number"
+        },
+        "Deathrate": {
+            "type": "number"
+        },
+        "Agriculture": {
+            "type": "string"
+        },
+        "Industry": {
+            "type": "number"
+        },
+        "Service": {
+            "type": "number"
+        }
+    }
+}

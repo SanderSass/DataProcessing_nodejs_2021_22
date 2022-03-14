@@ -1,0 +1,39 @@
+{
+    "$shcema": "http://json-schema.org/draft-06/schema#",
+    "title": "Happiness",
+    "type": "object",
+    "properties": {
+        "Country": {
+            "type": "string"
+        },
+        "Happiness_Rank": {
+            "type": "string"
+        },
+        "Happiness_Score": {
+            "type": "number"
+        },
+        "Economy": {
+            "type": "string"
+        },
+        "Family": {
+            "type": "string"
+        },
+        "Health": {
+            "type": "string"
+        },
+        "Freedom": {
+            "type": "string"
+        },
+        "Trust": {
+            "type": "string"
+        },
+        "Generosity": {
+            "type": "string"
+        },
+        "Year": {
+            "type": "number",
+            "minimum": "2010",
+            "maximum": "2010"
+        }
+    }
+}
