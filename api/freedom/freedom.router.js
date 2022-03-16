@@ -2,7 +2,7 @@ const {insertFreedom, readFreedom} = require("./freedom.controller");
 
 const router = require("express").Router();
 const validateDto = require("../../middleware/validate-dto");
-const songSchema = require("../../schemas/songs");
+const freedomSchema = require("../../schemas/json/freedom");
 
 /**
  * @swagger
@@ -15,7 +15,7 @@ const songSchema = require("../../schemas/songs");
  *          '400':
  *              description: Bad POST Request
  */
- router.post("/freedom", insertFreedom);
+ router.post("/freedom", validateDto(freedomSchema),insertFreedom);
 
  /**
   * @swagger
@@ -30,4 +30,6 @@ const songSchema = require("../../schemas/songs");
   *          '400':
   *              description: Bad GET Request
   */
- router.get("/freedom", readFreedom);
+ router.get("/freedom/:Country", readFreedom);
+
+ module.exports = router;

@@ -20,7 +20,8 @@ module.exports = {
     },
 
     readFreedom: (req, res) => {
-        readFreedom((err, results) => {
+        const Country = req.params.Country;
+        readFreedom(Country, (err, results) => {
             if (err) {
                 console.log(err);
                 return res.status(400).json({

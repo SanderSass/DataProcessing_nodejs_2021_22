@@ -27,10 +27,10 @@
             "type": "number"
         },
         "HUMAN_FREEDOM_Rank": {
-            "type": "string"
+            "type": "number"
         },
         "HUMAN_FREEDOM_Quartile": {
-            "type": "string"
+            "type": "number"
         }
     }
 }
