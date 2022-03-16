@@ -12,13 +12,16 @@ const url = process.env.URL_KEY;
 const URL = process.env.DB_HOST;
 const root = process.env.ROOT_API;
 
+const app = express();
+app.use(express.json());
+
 //Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
     swaggerDefinition: {
             openapi: "3.0.0",
             info:{
                 title: "Data Processing: Statistic RESTful API",
-                version: "1.1",
+                version: "1.2",
                 description: "The API goal is support consuming applications",
                 contact: {
                     name:"Sander Siimann"
@@ -49,13 +52,8 @@ const swaggerOptions = {
     apis: ["./api/freedom/*.js"]
 };
 
-const app = express();
-
-app.use(express.json());
-
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
 
 // app.get(url, (req, res) => {
 //     let privateKey = fs.readFileSync(code, "utf8");
