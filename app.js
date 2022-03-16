@@ -18,7 +18,7 @@ const swaggerOptions = {
             openapi: "3.0.0",
             info:{
                 title: "Data Processing: Statistic RESTful API",
-                version: "1.0",
+                version: "1.1",
                 description: "The API goal is support consuming applications",
                 contact: {
                     name:"Sander Siimann"
