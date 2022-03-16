@@ -1,5 +1,5 @@
 // require("dotenv").config();
-const { createPool } = require("tedious").Connection;
+const { createPool } = require("mysql");
 
 // not secure yet, .env file not responding
 const pool = createPool({

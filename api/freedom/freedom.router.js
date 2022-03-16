@@ -15,7 +15,7 @@ const songSchema = require("../../schemas/songs");
  *          '400':
  *              description: Bad POST Request
  */
- router.post("/freedom", validateDto(songSchema), insertFreedom);
+ router.post("/freedom", insertFreedom);
 
  /**
   * @swagger
