@@ -4,7 +4,7 @@ const schema = {
   $schema: "http://json-schema.org/draft-07/schema#",
   type: "object",
   title: "Freedom",
-  description: "This document validates the dataset of freedom",
+  description: "This schema validates the dataset of freedom",
   properties: {
     Year: {
         "type": "integer"

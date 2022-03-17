@@ -1,4 +1,4 @@
-const {insertFreedom, readFreedom} = require("./freedom.service");
+const {insertFreedom, readFreedom, readFreedomByCountry} = require("./freedom.service");
 
 module.exports = {
     insertFreedom: (req, res) => {
@@ -20,8 +20,7 @@ module.exports = {
     },
 
     readFreedom: (req, res) => {
-        const Country = req.params.Country;
-        readFreedom(Country, (err, results) => {
+        readFreedom((err, results) => {
             if (err) {
                 console.log(err);
                 return res.status(400).json({
@@ -39,6 +38,29 @@ module.exports = {
                 data: results
                 });
             }
-        })
+        });
+    },
+
+    readFreedomByCountry: (req, res) => {
+        const Country = req.params.Country;
+        readFreedomByCountry(Country, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.status(400).json({
+                    success: 0,
+                    data: "Bad GET Request: " + err.code
+                });
+            } else if (!results) {
+                return res.status(204).json({
+                    success: 0,
+                    message: "Record not found!"
+                });
+            } else {
+                return res.status(200).json({
+                success: 1,
+                data: results
+                });
+            }
+        });
     }
 }

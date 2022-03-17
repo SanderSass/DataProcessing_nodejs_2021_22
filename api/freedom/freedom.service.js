@@ -22,23 +22,34 @@ module.exports = {
             }
         )
     },
-    readFreedom: (Country, callBack) =>{
+    readFreedom: callBack =>{
         pool.query(
-            "SELECT * FROM freedom WHERE Country=?",
-            [Country],
+            "SELECT * FROM freedom",
+            [],
             (error, results, fields) => {
-                if (!error) {
+                if (error) {
                     return callBack(error);
                 } else {
-                    return callBack(results)
+                    return callBack(null, results)
                 }
             }
         )
     },
+    readFreedomByCountry: (Country, callBack) =>{
+        pool.query(
+            "SELECT * FROM freedom WHERE Country = ?",
+            [Country],
+            (error, results, fields) => {
+                if (error) {
+                    return callBack(error);
+                } else {
+                    return callBack(null, results)
+                }
+            }
+        )
+    }
     // updateFreedom: () => {
-
     // },
     // deleteFreedom: () => {
-
     // }
 }
