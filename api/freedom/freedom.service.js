@@ -24,7 +24,7 @@ module.exports = {
     },
     readFreedom: callBack =>{
         pool.query(
-            "SELECT * FROM freedom",
+            "SELECT * FROM freedom ORDER BY Year ASC",
             [],
             (error, results, fields) => {
                 if (error) {
