@@ -1,4 +1,4 @@
-const {insertFreedom, readFreedom, readFreedomByCountry} = require("./freedom.controller");
+const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom} = require("./freedom.controller");
 
 const router = require("express").Router();
 const validateDto = require("../../middleware/validate-dto");
@@ -36,7 +36,7 @@ const freedomSchema = require("../../schemas/json/freedom");
   * @swagger
   * /freedom/:Country:
   *  get:
-  *      description: Select freedom data
+  *      description: Select freedom data by Country
   *      responses:
   *          '200':
   *              description: A successful response
@@ -45,6 +45,36 @@ const freedomSchema = require("../../schemas/json/freedom");
   *          '400':
   *              description: Bad GET Request
   */
-   router.get("/freedom/:Country", readFreedomByCountry);
+  router.get("/freedom/:Country", readFreedomByCountry);
 
- module.exports = router;
+ /**
+  * @swagger
+  * /freedom:
+  *  patch:
+  *      description: Use it to update the freedom
+  *      responses:
+  *          '200':
+  *              description: Updated successfully!
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad Update Request
+  */
+ router.patch("/freedom", updateFreedom);
+
+ /**
+  * @swagger
+  * /songs:
+  *  delete:
+  *      description: Use it to delete the freedom
+  *      responses:
+  *          '200':
+  *              description: "Song is deleted successfully!"
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad Delete Request
+  */
+ router.delete("/freedom", deleteFreedom);
+
+module.exports = router;

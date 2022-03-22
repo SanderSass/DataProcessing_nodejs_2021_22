@@ -6,11 +6,14 @@ const swaggerUi = require("swagger-ui-express")
 const express = require("express");
 const isAuthorized = require("./middleware/authentication");
 const freedomRoot = require("./api/freedom/freedom.router");
+const fs = require("fs");
+const jwt = require("jsonwebtoken");
 
 const port = process.env.APP_PORT;
 const secret = process.env.URL_KEY;
 const URL = process.env.DB_HOST;
 const root = process.env.ROOT_API;
+const code = process.env.ENC_SECRET;
 
 //Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -18,7 +21,7 @@ const swaggerOptions = {
             openapi: "3.0.0",
             info:{
                 title: "Data Processing: Statistic RESTful API",
-                version: "1.3",
+                version: "1.4",
                 description: "The API goal is support consuming applications",
                 contact: {
                     name:"Sander Siimann"
@@ -54,15 +57,15 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get(secret, (req, res) => {
-    let privateKey = fs.readFileSync(code, "utf8");//ReferenceError: fs is not defined
+    let privateKey = fs.readFileSync(code, "utf8");
     let token = jwt.sign({"body": "stuff"}, privateKey, {algorithm: "HS256"});
     res.send(token);
 });
 
 app.use(root, freedomRoot,(req, res) => {
-    res.status(401).json({"message": "unauhorized"})
+    res.status(401).json({"message": "unauthorized"})
 });
 
 app.listen(port, () => {
-    console.log("Server up and running http://localhost:", port);
+    console.log("Server up and running http://localhost:",port);
 });
