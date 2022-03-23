@@ -8,7 +8,7 @@ const freedomSchema = require("../../schemas/json/freedom");
  * @swagger
  * /happiness:
  *  post:
- *      description: Inserting new freedom data
+ *      description: Inserting new happiness data
  *      responses:
  *          '201':
  *              description: The request succeeded
@@ -21,7 +21,7 @@ router.post("/happiness", validateDto(freedomSchema),insertHappiness);
  * @swagger
  * /happiness:
  *  get:
- *      description: Select freedom data
+ *      description: Select happiness data
  *      responses:
  *          '200':
  *              description: A successful response
@@ -36,7 +36,7 @@ router.get("/happiness", readHappiness);
  * @swagger
  * /happiness/:Country:
  *  get:
- *      description: Select freedom data by Country
+ *      description: Select happiness data by Country
  *      responses:
  *          '200':
  *              description: A successful response
@@ -51,7 +51,7 @@ router.get("/happiness/:Country", readHappinessByCountry);
  * @swagger
  * /happiness:
  *  patch:
- *      description: Use it to update the freedom
+ *      description: Use it to update the happiness
  *      responses:
  *          '200':
  *              description: Updated successfully!
@@ -66,7 +66,7 @@ router.patch("/happiness", updateHappiness);
  * @swagger
  * /songs:
  *  delete:
- *      description: Use it to delete the freedom
+ *      description: Use it to delete the happiness
  *      responses:
  *          '200':
  *              description: "Song is deleted successfully!"

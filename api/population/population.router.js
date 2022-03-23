@@ -1,83 +1,80 @@
-require("dotenv").config();
-const pool = require("../../config/database");
+const {insertPopulation, readPopulation, readPopulationByCountry, updatePopulation, deletePopulation} = require("./population.controller");
 
-module.exports = {
-    insertPopulation: (data, callBack) =>{
-        pool.query(
-            "INSERT INTO population (Year, ISO_Code, Country, PERSONAL_FREEDOM_Score, ECONOMIC_FREEDOM_Score, HUMAN_FREEDOM_Score, HUMAN_FREEDOM_Rank, HUMAN_FREEDOM_Quartile) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            [data.Year,
-            data.ISO_Code,
-            data.Country,
-            data.PERSONAL_FREEDOM_Score,
-            data.ECONOMIC_FREEDOM_Score,
-            data.HUMAN_FREEDOM_Score,
-            data.HUMAN_FREEDOM_Rank,
-            data.HUMAN_FREEDOM_Quartile],
-            (error, results, fields) => {
-                if (!error) {
-                    return callBack(error);
-                } else {
-                    return callBack(results)
-                }
-            }
-        )
-    },
-    readPopulation: callBack =>{
-        pool.query(
-            "SELECT * FROM population ORDER BY Year ASC",
-            [],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                } else {
-                    return callBack(null, results)
-                }
-            }
-        )
-    },
-    readPopulationByCountry: (Country, callBack) =>{
-        pool.query(
-            "SELECT * FROM population WHERE Country = ?",
-            [Country],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                } else {
-                    return callBack(null, results)
-                }
-            }
-        )
-    },
-    updatePopulation: (data, callBack) => {
-        pool.query(
-            "UPDATE population SET Year=?, ISO_Code=?, Country=?, PERSONAL_FREEDOM_Score=?, ECONOMIC_FREEDOM_Score=?, HUMAN_FREEDOM_Score=?, HUMAN_FREEDOM_Rank=?, HUMAN_FREEDOM_Quartile=? WHERE Year=?",
-            [data.Year,
-            data.ISO_Code,
-            data.Country,
-            data.PERSONAL_FREEDOM_Score,
-            data.ECONOMIC_FREEDOM_Score,
-            data.HUMAN_FREEDOM_Score,
-            data.HUMAN_FREEDOM_Rank,
-            data.HUMAN_FREEDOM_Quartile],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                } else {
-                    return callBack(null, results)
-                }
-            }
-        )
-    },
-    deletePopulation: (data, callBack) => {
-        pool.query(
-            "DELETE FROM population WHERE Year=?",
-            [data.Year],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                }
-                return callBack(null, results)
-            }
-        )
-    }
-}
+const router = require("express").Router();
+const validateDto = require("../../middleware/validate-dto");
+const freedomSchema = require("../../schemas/json/freedom");
+
+/**
+ * @swagger
+ * /population:
+ *  post:
+ *      description: Inserting new population data
+ *      responses: 
+ *          '201':
+ *              description: The request succeeded
+ *          '400':
+ *              description: Bad POST Request
+ */
+ router.post("/population", validateDto(freedomSchema),insertPopulation);
+
+ /**
+  * @swagger
+  * /population:
+  *  get:
+  *      description: Select population data
+  *      responses:
+  *          '200':
+  *              description: A successful response
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad GET Request
+  */
+ router.get("/population", readPopulation);
+
+  /**
+  * @swagger
+  * /population/:Country:
+  *  get:
+  *      description: Select population data by Country
+  *      responses:
+  *          '200':
+  *              description: A successful response
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad GET Request
+  */
+  router.get("/population/:Country", readPopulationByCountry);
+
+ /**
+  * @swagger
+  * /freedom:
+  *  patch:
+  *      description: Use it to update the population
+  *      responses:
+  *          '200':
+  *              description: Updated successfully!
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad Update Request
+  */
+ router.patch("/population", updatePopulation);
+
+ /**
+  * @swagger
+  * /freedom:
+  *  delete:
+  *      description: Use it to delete the population
+  *      responses:
+  *          '200':
+  *              description: "Population is deleted successfully!"
+  *          '204':
+  *              description: Record not found
+  *          '400':
+  *              description: Bad Delete Request
+  */
+ router.delete("/population", deletePopulation);
+
+module.exports = router;

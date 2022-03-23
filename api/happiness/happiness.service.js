@@ -52,9 +52,8 @@ module.exports = {
     },
     updateHappiness: (data, callBack) => {
         pool.query(
-            "UPDATE happiness SET Country=?, Happiness_Rank=?, Happiness_Score=?, Economy=?, Family=?, Health=?,Freedom=?, Trust=?, Generosity=?, Year=? WHERE Country=?",
-            [data.Country,
-                data.Happiness_Rank,
+            "UPDATE happiness SET Happiness_Rank=?, Happiness_Score=?, Economy=?, Family=?, Health=?,Freedom=?, Trust=?, Generosity=?, Year=? WHERE Country=?",
+            [data.Happiness_Rank,
                 data.Happiness_Score,
                 data.Economy,
                 data.Family,
@@ -62,7 +61,8 @@ module.exports = {
                 data.Freedom,
                 data.Trust,
                 data.Generosity,
-                data.Year],
+                data.Year,
+                data.Country],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
