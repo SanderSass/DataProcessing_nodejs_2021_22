@@ -8,11 +8,13 @@ const isAuthorized = require("./middleware/authentication");
 const freedomRoot = require("./api/freedom/freedom.router");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const errorHandler = require('errorhandler');
 
 const port = process.env.APP_PORT;
 const secret = process.env.URL_KEY;
 const URL = process.env.DB_HOST;
 const root = process.env.ROOT_API;
+const swaggerRoot = process.env.SWAGGER_ROOT;
 const code = process.env.ENC_SECRET;
 
 //Extended: https://swagger.io/specification/#infoObject
@@ -21,7 +23,7 @@ const swaggerOptions = {
             openapi: "3.0.0",
             info:{
                 title: "Data Processing: Statistic RESTful API",
-                version: "1.4",
+                version: "1.5",
                 description: "The API goal is support consuming applications",
                 contact: {
                     name:"Sander Siimann"
@@ -43,7 +45,7 @@ const swaggerOptions = {
                     default: port
                 },
                 basePath: {
-                    default: root
+                    default: swaggerRoot
                 }
             }
     },
@@ -53,8 +55,11 @@ const swaggerOptions = {
 const app = express();
 app.use(express.json());
 
+//for catching error
+app.use(errorHandler());
+
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(swaggerRoot, swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get(secret, (req, res) => {
     let privateKey = fs.readFileSync(code, "utf8");

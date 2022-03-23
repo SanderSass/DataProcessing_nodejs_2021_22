@@ -13,7 +13,7 @@ const pool = createPool({
 
 pool.getConnection(function(err){
     if (err) throw err;
-  console.log("Connected!");
+  console.log("Database Connected!");
 });
 
 module.exports = pool;

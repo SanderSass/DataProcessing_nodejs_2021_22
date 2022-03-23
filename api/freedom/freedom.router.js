@@ -64,7 +64,7 @@ const freedomSchema = require("../../schemas/json/freedom");
 
  /**
   * @swagger
-  * /songs:
+  * /freedom:
   *  delete:
   *      description: Use it to delete the freedom
   *      responses:
