@@ -1,13 +1,13 @@
 require("dotenv").config();
 
 const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express")
-
-const express = require("express");
-const isAuthorized = require("./middleware/authentication");
-const freedomRoot = require("./api/freedom/freedom.router");
+const swaggerUi = require("swagger-ui-express");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const express = require("express");
+
+const isAuthorized = require("./middleware/authentication");
+const freedomRoot = require("./api/freedom/freedom.router");
 const errorHandler = require('errorhandler');
 
 const port = process.env.APP_PORT;
@@ -20,34 +20,34 @@ const code = process.env.ENC_SECRET;
 //Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
     swaggerDefinition: {
-            openapi: "3.0.0",
-            info:{
-                title: "Data Processing: Statistic RESTful API",
-                version: "1.6",
-                description: "The API goal is support consuming applications",
-                contact: {
-                    name:"Sander Siimann"
-                },       
-            },
-            servers: {
-                url: "http://{username}:{port}/{basePath}",
-                description: "local server to access to user songs",
-                variables: {
-                    username: {
-                        default: URL,
-                        description: "value"
-                    }
-                },
-                port: {
-                    enum: [
-                        port
-                    ],
-                    default: port
-                },
-                basePath: {
-                    default: swaggerRoot
+        openapi: "3.0.0",
+        info:{
+            title: "Data Processing: Statistic RESTful API",
+            version: "1.6",
+            description: "The API goal is support consuming applications",
+            contact: {
+                name:"Sander Siimann"
+            },       
+        },
+        servers: {
+            url: "http://{username}:{port}/{basePath}",
+            description: "local server to access to user songs",
+            variables: {
+                username: {
+                    default: URL,
+                    description: "value"
                 }
+            },
+            port: {
+                enum: [
+                    port
+                ],
+                default: port
+            },
+            basePath: {
+                default: swaggerRoot
             }
+        }
     },
     apis: ["./api/freedom/*.js", "./api/happiness/*.js", "./api/population/*.js"]
 };
@@ -67,7 +67,7 @@ app.get(secret, (req, res) => {
     res.send(token);
 });
 
-app.use(root, freedomRoot,(req, res) => {
+app.use(root, isAuthorized, freedomRoot,(req, res) => {
     res.status(401).json({"message": "unauthorized"})
 });
 

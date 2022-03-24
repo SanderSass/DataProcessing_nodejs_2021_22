@@ -2,7 +2,7 @@ const {insertHappiness, readHappiness, readHappinessByCountry, updateHappiness, 
 
 const router = require("express").Router();
 const validateDto = require("../../middleware/validate-dto");
-const freedomSchema = require("../../schemas/json/freedom");
+const freedomSchema = require("../../schemas/json/freedom.json");
 
 /**
  * @swagger

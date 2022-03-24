@@ -1,21 +1,24 @@
 const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom} = require("./freedom.controller");
 
 const router = require("express").Router();
-const validateDto = require("../../middleware/validate-dto");
-const freedomSchema = require("../../schemas/json/freedom");
+const validateJson = require("../../middleware/validateJson");
+const validationXML = require("../../middleware/validateXml");
+const freedomSchema = require("../../schemas/json/freedom.json");
+const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
 
 /**
  * @swagger
  * /freedom:
  *  post:
  *      description: Inserting new freedom data
- *      responses: 
+ *      responses:
  *          '201':
  *              description: The request succeeded
  *          '400':
  *              description: Bad POST Request
  */
- router.post("/freedom", validateDto(freedomSchema),insertFreedom);
+ router.post("/freedom", validateJson(freedomSchema), insertFreedom);
+ router.post("/freedom", validationXML(freedomSchemaXsd), insertFreedom);
 
  /**
   * @swagger

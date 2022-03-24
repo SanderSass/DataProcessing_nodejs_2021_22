@@ -70,8 +70,9 @@ module.exports = {
     },
     deleteFreedom: (data, callBack) => {
         pool.query(
-            "DELETE FROM freedom WHERE Year=?",
-            [data.Year],
+            "DELETE FROM freedom WHERE Year=? AND Country=?",
+            [data.Year,
+            data.Country],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);

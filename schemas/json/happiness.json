@@ -32,8 +32,8 @@
         },
         "Year": {
             "type": "number",
-            "minimum": "2010",
-            "maximum": "2010"
+            "minimum": "2000",
+            "maximum": "2022"
         }
     }
 }
