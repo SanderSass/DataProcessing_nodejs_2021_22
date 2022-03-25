@@ -2,9 +2,17 @@ const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFr
 
 const router = require("express").Router();
 const validateJson = require("../../middleware/validateJson");
-const validationXML = require("../../middleware/validateXml");
 const freedomSchema = require("../../schemas/json/freedom.json");
-const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+
+const validationXML = require("../../middleware/validateXml");
+//const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+//const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
+
+// function loadXmlSchema(xmlSchemaDoc) {
+//     var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
+//     var schemaText = fs.readFileSync(schemaPath, 'utf8');
+//     return libxmljs.parseXml(schemaText); 
+// }
 
 /**
  * @swagger
@@ -18,7 +26,7 @@ const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
  *              description: Bad POST Request
  */
  router.post("/freedom", validateJson(freedomSchema), insertFreedom);
- router.post("/freedom", validationXML(freedomSchemaXsd), insertFreedom);
+ //router.post("/freedom", validationXML(xmlSchemaDoc), insertFreedom);
 
  /**
   * @swagger
@@ -63,7 +71,7 @@ const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
   *          '400':
   *              description: Bad Update Request
   */
- router.patch("/freedom", updateFreedom);
+ router.patch("/freedom", validateJson(freedomSchema), updateFreedom);
 
  /**
   * @swagger
@@ -78,6 +86,6 @@ const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
   *          '400':
   *              description: Bad Delete Request
   */
- router.delete("/freedom", deleteFreedom);
+ router.delete("/freedom", validateJson(freedomSchema), deleteFreedom);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 targetNamespace="https://www.w3schools.com"
 xmlns="https://www.w3schools.com"
@@ -7,6 +7,8 @@ elementFormDefault="qualified">
     <xs:element name="Year">
         <xs:simpleType>
             <xs:restriction base="xs:integer">
+                <xs:minInclusive value="2000"/>
+                <xs:maxInclusive value="2022"/>
             </xs:restriction>
         </xs:simpleType>
     </xs:element>
@@ -26,38 +28,38 @@ elementFormDefault="qualified">
     </xs:element>
 
     <xs:element name="PERSONAL_FREEDOM_Score">
-        <xs:simpleType>
+        <xs:complexType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:simpleType>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="ECONOMIC_FREEDOM_Score">
-        <xs:simpleType>
+        <xs:complexType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:simpleType>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Score">
-        <xs:simpleType>
+        <xs:complexType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:simpleType>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Rank">
-        <xs:simpleType>
+        <xs:complexType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:simpleType>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Quartile">
-        <xs:simpleType>
+        <xs:complexType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:simpleType>
+        </xs:complexType>
     </xs:element>
     
 </xs:schema>

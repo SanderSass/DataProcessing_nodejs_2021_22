@@ -1,8 +1,8 @@
 const {insertPopulation, readPopulation, readPopulationByCountry, updatePopulation, deletePopulation} = require("./population.controller");
 
 const router = require("express").Router();
-const validateDto = require("../../middleware/validate-dto");
-const freedomSchema = require("../../schemas/json/freedom");
+const validateJson = require("../../middleware/validateJson");
+const freedomSchema = require("../../schemas/json/freedom.json");
 
 /**
  * @swagger
@@ -15,7 +15,7 @@ const freedomSchema = require("../../schemas/json/freedom");
  *          '400':
  *              description: Bad POST Request
  */
- router.post("/population", validateDto(freedomSchema),insertPopulation);
+ router.post("/population", validateJson(freedomSchema), insertPopulation);
 
  /**
   * @swagger
@@ -60,7 +60,7 @@ const freedomSchema = require("../../schemas/json/freedom");
   *          '400':
   *              description: Bad Update Request
   */
- router.patch("/population", updatePopulation);
+ router.patch("/population", validateJson(freedomSchema), updatePopulation);
 
  /**
   * @swagger
@@ -75,6 +75,6 @@ const freedomSchema = require("../../schemas/json/freedom");
   *          '400':
   *              description: Bad Delete Request
   */
- router.delete("/population", deletePopulation);
+ router.delete("/population", validateJson(freedomSchema), deletePopulation);
 
 module.exports = router;

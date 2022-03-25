@@ -4,11 +4,18 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require("express");
+const path = require('path');
 
 const isAuthorized = require("./middleware/authentication");
 const freedomRoot = require("./api/freedom/freedom.router");
+const happinessRoot = require("./api/happiness/happiness.router");
+const populationRoot = require("./api/population/population.router");
 const errorHandler = require('errorhandler');
+
+const app = express();
 
 const port = process.env.APP_PORT;
 const secret = process.env.URL_KEY;
@@ -22,8 +29,8 @@ const swaggerOptions = {
     swaggerDefinition: {
         openapi: "3.0.0",
         info:{
-            title: "Data Processing: Statistic RESTful API",
-            version: "1.6",
+            title: "Data Processing: Node.js RESTful API",
+            version: "1.7",
             description: "The API goal is support consuming applications",
             contact: {
                 name:"Sander Siimann"
@@ -52,14 +59,17 @@ const swaggerOptions = {
     apis: ["./api/freedom/*.js", "./api/happiness/*.js", "./api/population/*.js"]
 };
 
-const app = express();
+//setting up the middlewares by using the app.use
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.raw({type: 'application/xml'}));
+app.use(cors());
 
 //for catching error
 app.use(errorHandler());
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use(swaggerRoot, swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); //Root http://localhost:5500/api-docs
 
 app.get(secret, (req, res) => {
     let privateKey = fs.readFileSync(code, "utf8");
@@ -68,6 +78,14 @@ app.get(secret, (req, res) => {
 });
 
 app.use(root, isAuthorized, freedomRoot,(req, res) => {
+    res.status(401).json({"message": "unauthorized"})
+});
+
+app.use(root, isAuthorized, happinessRoot,(req, res) => {
+    res.status(401).json({"message": "unauthorized"})
+});
+
+app.use(root, isAuthorized, populationRoot,(req, res) => {
     res.status(401).json({"message": "unauthorized"})
 });
 

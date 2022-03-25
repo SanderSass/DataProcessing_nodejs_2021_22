@@ -1,17 +1,20 @@
 const xml = require("object-to-xml");
-const libxml = require('libxmljs2');
+const libxmljs = require('libxmljs2');
 const RE2 = require("re2");
 const { errorMonitor } = require('tedious/lib/bulk-load');
 
 function validateXml(xmlvalidation) {
     return (req, res, next) => {
-        const allXmlData = libxml.parseXmlString(req.body);
-        const valid = validate(allXmlData, xmlvalidation, { throwError: true, regExp: RE2 });
+        const xmlBody = req.body;
+        const xmlDoc = libxmljs.parseXml(xmlBody);
+        const valid = xmlDoc.validate(xmlvalidation, { throwError: true, regExp: RE2 });
         if (!valid) {
             const errors = errorMonitor;
-            res.status(500).xml(errors);
+            res.status(400).send(xml(errors));
+        } else {
+            res.status(200).send(xml('validation successful'));
         }
-        next()
+        next();
     };
 }
 

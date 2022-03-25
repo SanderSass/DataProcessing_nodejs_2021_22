@@ -1,5 +1,7 @@
 const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom} = require("./freedom.service");
 
+const xml = require("object-to-xml");
+
 module.exports = {
     insertFreedom: (req, res) => {
         const body = req.body;
@@ -21,23 +23,39 @@ module.exports = {
 
     readFreedom: (req, res) => {
         readFreedom((err, results) => {
-            if (err) {
-                console.log(err);
-                return res.status(400).json({
-                    success: 0,
-                    data: "Bad GET Request: " + err.code
-                });
-            } else if (!results) {
-                return res.status(204).json({
-                    success: 0,
-                    message: "Record not found!"
-                });
-            } else {
-                return res.status(200).json({
-                success: 1,
-                data: results
-                });
-            }
+                // if (error) {
+                //     next(error);
+                // } else {
+                //     if(req.get('Content-Type') === 'application/json') {
+                //         return res.status(200).json({
+                //             success: 1,
+                //             data: results
+                //         });
+                //     }
+                //     if(req.get('Content-Type') === 'application/xml') {
+                //         return res.send(xml({
+                //             success: 1,
+                //             data: results
+                //         }));
+                //     }
+                // }
+                if (err) {
+                    console.log(err);
+                    return res.status(400).json({
+                        success: 0,
+                        data: "Bad GET Request: " + err.code
+                    });
+                } else if (!results) {
+                    return res.status(204).json({
+                        success: 0,
+                        message: "Record not found!"
+                    });
+                } else {
+                    return res.status(200).json({
+                    success: 1,
+                    data: results
+                    });
+                }
         });
     },
 
