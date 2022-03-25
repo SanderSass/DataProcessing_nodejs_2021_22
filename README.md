@@ -31,3 +31,4 @@ Make sure the 'jwt' is front of the key.
 ## Swagger documentation
 Here you find more info of API system docs: **http://localhost:5500/api-docs**.
 Make sure that the API is in run mode to see the Swagger doc.
+![Class Diagram](/images/swagger.png)

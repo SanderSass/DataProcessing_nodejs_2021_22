@@ -2,8 +2,10 @@ require("dotenv").config();
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require("express");
@@ -30,13 +32,13 @@ const swaggerOptions = {
         openapi: "3.0.0",
         info:{
             title: "Data Processing: Node.js RESTful API",
-            version: "1.7",
+            version: "1.8",
             description: "The API goal is support consuming applications",
             contact: {
                 name:"Sander Siimann"
             },       
         },
-        servers: {
+        servers: [{
             url: "http://{username}:{port}/{basePath}",
             description: "local server to access to user songs",
             variables: {
@@ -54,7 +56,7 @@ const swaggerOptions = {
             basePath: {
                 default: swaggerRoot
             }
-        }
+        }]
     },
     apis: ["./api/freedom/*.js", "./api/happiness/*.js", "./api/population/*.js"]
 };
