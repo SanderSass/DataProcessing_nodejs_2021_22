@@ -2,10 +2,24 @@ const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFr
 
 const xml = require("object-to-xml");
 
+const validateJson = require("../../middleware/validateJson");
+const freedomSchema = require("../../schemas/json/freedom.json");
+
+const validationXML = require("../../middleware/validateXml");
+const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
+
+function loadXmlSchema(xmlSchemaDoc) {
+    var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
+    var schemaText = fs.readFileSync(schemaPath, 'utf8');
+    return libxmljs.parseXml(schemaText); 
+}
+
+
 module.exports = {
     insertFreedom: (req, res) => {
         const body = req.body;
-        insertFreedom(body, (err, results) =>{
+        insertFreedom(body, (error, results) =>{
             if (err) {
                 console.log(err);
                 return res.status(400).json({
@@ -18,27 +32,21 @@ module.exports = {
                     data: results
                 });
             }
+            // if (error) {
+            //     next(error);
+            // } else {
+            //     if(req.get('Content-Type') === 'application/json') {
+            //         validateJson(freedomSchema);
+            //     }
+            //     if(req.get('Content-Type') === 'application/xml') {
+                    
+            //     }
+            // }
         });
     },
 
     readFreedom: (req, res) => {
         readFreedom((err, results) => {
-                // if (error) {
-                //     next(error);
-                // } else {
-                //     if(req.get('Content-Type') === 'application/json') {
-                //         return res.status(200).json({
-                //             success: 1,
-                //             data: results
-                //         });
-                //     }
-                //     if(req.get('Content-Type') === 'application/xml') {
-                //         return res.send(xml({
-                //             success: 1,
-                //             data: results
-                //         }));
-                //     }
-                // }
                 if (err) {
                     console.log(err);
                     return res.status(400).json({

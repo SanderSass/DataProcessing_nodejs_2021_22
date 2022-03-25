@@ -1,18 +1,13 @@
 const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom} = require("./freedom.controller");
 
 const router = require("express").Router();
+
 const validateJson = require("../../middleware/validateJson");
 const freedomSchema = require("../../schemas/json/freedom.json");
 
 const validationXML = require("../../middleware/validateXml");
-//const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
-//const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
-
-// function loadXmlSchema(xmlSchemaDoc) {
-//     var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
-//     var schemaText = fs.readFileSync(schemaPath, 'utf8');
-//     return libxmljs.parseXml(schemaText); 
-// }
+const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
 
 /**
  * @swagger
@@ -25,8 +20,7 @@ const validationXML = require("../../middleware/validateXml");
  *          '400':
  *              description: Bad POST Request
  */
- router.post("/freedom", validateJson(freedomSchema), insertFreedom);
- //router.post("/freedom", validationXML(xmlSchemaDoc), insertFreedom);
+ router.post("/freedom", validateJson(freedomSchema),insertFreedom);
 
  /**
   * @swagger

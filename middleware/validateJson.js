@@ -10,6 +10,11 @@ function validateJson(jsonvalidation) {
         if (!valid) {
             const errors = errorMonitor;
             res.status(500).json(errors);
+        } else {
+            return res.status(200).json({
+                success: 1,
+                data: results
+            });
         }
         next();
     };

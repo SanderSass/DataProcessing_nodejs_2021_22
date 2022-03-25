@@ -12,7 +12,10 @@ function validateXml(xmlvalidation) {
             const errors = errorMonitor;
             res.status(400).send(xml(errors));
         } else {
-            res.status(200).send(xml('validation successful'));
+            res.status(200).send(xml({
+                success: 1,
+                data: results
+            }));
         }
         next();
     };
