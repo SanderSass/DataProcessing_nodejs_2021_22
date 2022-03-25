@@ -6,14 +6,14 @@ const validateJson = require("../../middleware/validateJson");
 const freedomSchema = require("../../schemas/json/freedom.json");
 
 const validationXML = require("../../middleware/validateXml");
-const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
-const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
+// const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+// const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
 
-function loadXmlSchema(xmlSchemaDoc) {
-    var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
-    var schemaText = fs.readFileSync(schemaPath, 'utf8');
-    return libxmljs.parseXml(schemaText); 
-}
+// function loadXmlSchema(xmlSchemaDoc) {
+//     var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
+//     var schemaText = fs.readFileSync(schemaPath, 'utf8');
+//     return libxmljs.parseXml(schemaText); 
+// }
 
 
 module.exports = {

@@ -40,7 +40,7 @@ const swaggerOptions = {
         },
         servers: [{
             url: "http://{username}:{port}/{basePath}",
-            description: "local server to access to user songs",
+            description: "local server to access to data",
             variables: {
                 username: {
                     default: URL,

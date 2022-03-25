@@ -49,7 +49,7 @@ const freedomSchema = require("../../schemas/json/freedom.json");
 
  /**
   * @swagger
-  * /freedom:
+  * /population:
   *  patch:
   *      description: Use it to update the population
   *      responses:
@@ -64,7 +64,7 @@ const freedomSchema = require("../../schemas/json/freedom.json");
 
  /**
   * @swagger
-  * /freedom:
+  * /population:
   *  delete:
   *      description: Use it to delete the population
   *      responses:

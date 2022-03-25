@@ -64,7 +64,7 @@ router.patch("/happiness", validateJson(freedomSchema), updateHappiness);
 
 /**
  * @swagger
- * /songs:
+ * /happiness:
  *  delete:
  *      description: Use it to delete the happiness
  *      responses:

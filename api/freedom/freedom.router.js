@@ -6,8 +6,8 @@ const validateJson = require("../../middleware/validateJson");
 const freedomSchema = require("../../schemas/json/freedom.json");
 
 const validationXML = require("../../middleware/validateXml");
-const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
-const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
+// const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
+// const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
 
 /**
  * @swagger
