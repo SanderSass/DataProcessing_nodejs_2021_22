@@ -15,11 +15,11 @@
 
 4. Install the project and locate the project into xampp->htdocs folder. For example: D: .\\..\xampp\\**htdocs**
 
-5. Open the API project "DataProcessing_nodejs_2021_22" in Visual Studio Code.
+5. Open the API project **DataProcessing_nodejs_2021_22** in Visual Studio Code.
 
 6. Set up the Node.js in project:
 
-   1. Install Node_modules using this command in terminal: "npm install". This command should install all dependencies / devDependencies which is stated in package.json. (Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*).
+   1. Install Node_modules using this command in terminal: "npm install". This command should install all dependencies / devDependencies (environment variables) which is stated in **package.json**. (Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*).
 
    2. Using this command, it starts the API local server : "npm run start".
 
