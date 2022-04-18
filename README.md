@@ -1,6 +1,6 @@
 # Readme for DataProcessing_nodejs_2021_22
 * Organization: **NHL Stenden University of Applied Sciences**
-* Subject: **Data Processing**
+* Subject: **Data Processing - Resit**
 * Date: **2022, March 1th**
 * Period: **3**
 * Made by **Sander Siimann**

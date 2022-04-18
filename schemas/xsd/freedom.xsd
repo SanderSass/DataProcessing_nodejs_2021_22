@@ -28,31 +28,31 @@ elementFormDefault="qualified">
     </xs:element>
 
     <xs:element name="PERSONAL_FREEDOM_Score">
-        <xs:complexType>
+        <xs:simpleType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:complexType>
+        </xs:simpleType>
     </xs:element>
 
     <xs:element name="ECONOMIC_FREEDOM_Score">
-        <xs:complexType>
+        <xs:simpleType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:complexType>
+        </xs:simpleType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Score">
-        <xs:complexType>
+        <xs:simpleType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:complexType>
+        </xs:simpleType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Rank">
-        <xs:complexType>
+        <xs:simpleType>
             <xs:restriction base="xs:number">
             </xs:restriction>
-        </xs:complexType>
+        </xs:simpleType>
     </xs:element>
 
     <xs:element name="HUMAN_FREEDOM_Quartile">

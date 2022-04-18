@@ -11,7 +11,6 @@ const cors = require('cors');
 const express = require("express");
 const path = require('path');
 
-const isAuthorized = require("./middleware/authentication");
 const freedomRoot = require("./api/freedom/freedom.router");
 const happinessRoot = require("./api/happiness/happiness.router");
 const populationRoot = require("./api/population/population.router");
@@ -79,15 +78,15 @@ app.get(secret, (req, res) => {
     res.send(token);
 });
 
-app.use(root, isAuthorized, freedomRoot,(req, res) => {
+app.use(root, freedomRoot,(req, res) => {
     res.status(401).json({"message": "unauthorized"})
 });
 
-app.use(root, isAuthorized, happinessRoot,(req, res) => {
+app.use(root, happinessRoot,(req, res) => {
     res.status(401).json({"message": "unauthorized"})
 });
 
-app.use(root, isAuthorized, populationRoot,(req, res) => {
+app.use(root, populationRoot,(req, res) => {
     res.status(401).json({"message": "unauthorized"})
 });
 
