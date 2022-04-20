@@ -34,7 +34,7 @@
 
 ## Testing the API in Postman
 1. Make sure the Authorization type is 'No auth'. 
-  ![Class Diagram](/images/no%20auth.png)
+    ![Class Diagram](/images/no%20auth.png)
 
   
 
@@ -70,3 +70,47 @@ Make sure that the API is in run mode to see the Swagger doc.
 * Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*. http://weaintplastic.github.io/web-development-field-guide/Development/Frontend_Development/Setting_up_your_project/Setup_Dependency_Managers/Node_Package_Manager/Initialize_NPM_on_an_existing_project.html
 * Apachefriends. (n.d.). *Download XAMPP*. https://www.apachefriends.org/download.html
 * Npm. (2021, November 9). *npm: nodemon*. https://www.npmjs.com/package/nodemon
+
+### NOTES FROM LECTURER
+
+General:
+
+* Typo in    package.json causing npm install to fail, after fixing it succeeds
+
+API:
+
+* The population     and happiness endpoints do not work, they keep returning “unauthorized”
+* Looking at the     code the population and happiness endpoints use the freedom schema for     validation which can’t be right.
+* GET http://localhost:5500/api/freedom/Timboektoe     returns 200 (OK) while the record cannot be found. It should’ve returned     404 instead
+* GET returns     integer values as strings, e.g. "Year": "2014"
+* POST on     /freefrom results in an error
+* XML support     has not been implemented
+* Restrictions     defined in the XML schemas are not implemented in the json schemas
+* XML schema has     a target namespace of [www.w3schools.com](http://www.w3schools.com/)
+* XML schemas     are not correct. missing root element, use of complex types where simple     types should’ve been used
+
+{
+
+"Year": 2014,
+
+"ISO_Code": "TBT",
+
+"Country": "Timboektoe",
+
+"PERSONAL_FREEDOM_Score": 7.61,
+
+"ECONOMIC_FREEDOM_Score": 7.48,
+
+"HUMAN_FREEDOM_Score": 7.54,
+
+"HUMAN_FREEDOM_Rank": 50,
+
+"HUMAN_FREEDOM_Quartile": 2
+
+}
+
+ReferenceError: results is not defined
+
+Visualisation:
+
+* Implemented, but doesn’t work, probably due to the jwt authorization in the endpoints. You might want to consider removing the authentication for the resit     anyway.
