@@ -33,22 +33,7 @@
 
 
 ## Testing the API in Postman
-1. Make sure the Authorization type is 'No auth'. 
-    ![Class Diagram](/images/no%20auth.png)
-
-  
-
-2. Run a url link to generate jwt key for getting an access to the other CRUD methods in Postman. URL link: **http://localhost:5500/lfbvo5184sgrg84e**
-
-![Class Diagram](/images/generateKey.png)
-
-3. Locate the key as following:
-   ![Class Diagram](/images/jwt%20token%20in%20postman.png)
-   Make sure the 'jwt' is front of the key.
-
-
-
-4. Then start to test our endpoints to see if its responds correctly using schemas and respond states.
+Start to test our endpoints to see if its responds correctly using schemas and respond states.
 
    Main endpoints (More info in Swagger documentation):
 
@@ -58,7 +43,7 @@
 
    To update(PATCH) or delete, then have to use a variable Country in the body to test update and delete.
 
-   PATCH: I used patch for update because I want to update only a specific object with certain variable, but with PUT it would overwrite all the objects variable.
+   PATCH: I used patch for update because I want to update only a specific object with certain variable, but with PUT it would overwrite all the objects with same variable.
 
 ## Swagger documentation
 Here you find more info of API system docs: **http://localhost:5500/api-docs**.

@@ -18,19 +18,19 @@
             "type": "string"
         },
         "PERSONAL_FREEDOM_Score": {
-            "type": "number"
+            "type": "float"
         },
         "ECONOMIC_FREEDOM_Score": {
-            "type": "number"
+            "type": "float"
         },
         "HUMAN_FREEDOM_Score": {
-            "type": "number"
+            "type": "float"
         },
         "HUMAN_FREEDOM_Rank": {
-            "type": "number"
+            "type": "integer"
         },
         "HUMAN_FREEDOM_Quartile": {
-            "type": "number"
+            "type": "integer"
         }
     }
 }

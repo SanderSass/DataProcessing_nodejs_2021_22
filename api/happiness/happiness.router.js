@@ -1,8 +1,6 @@
 const {insertHappiness, readHappiness, readHappinessByCountry, updateHappiness, deleteHappiness} = require("./happiness.controller");
 
 const router = require("express").Router();
-const validateJson = require("../../middleware/validateJson");
-const freedomSchema = require("../../schemas/json/happiness.json");
 
 /**
  * @swagger
@@ -15,7 +13,7 @@ const freedomSchema = require("../../schemas/json/happiness.json");
  *          '400':
  *              description: Bad POST Request
  */
-router.post("/happiness", validateJson(freedomSchema),insertHappiness);
+router.post("/happiness",insertHappiness);
 
 /**
  * @swagger
@@ -60,7 +58,7 @@ router.get("/happiness/:Country", readHappinessByCountry);
  *          '400':
  *              description: Bad Update Request
  */
-router.patch("/happiness", validateJson(freedomSchema), updateHappiness);
+router.patch("/happiness", updateHappiness);
 
 /**
  * @swagger
@@ -75,6 +73,6 @@ router.patch("/happiness", validateJson(freedomSchema), updateHappiness);
  *          '400':
  *              description: Bad Delete Request
  */
-router.delete("/happiness", validateJson(freedomSchema), deleteHappiness);
+router.delete("/happiness", deleteHappiness);
 
 module.exports = router;

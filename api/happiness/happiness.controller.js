@@ -1,7 +1,7 @@
 const {insertHappiness, readHappiness, readHappinessByCountry, updateHappiness, deleteHappiness} = require("./happiness.service");
 
 module.exports = {
-    insertHappiness: (req, res) => {
+    insertHappiness: async (req, res) => {
         const body = req.body;
         insertHappiness(body, (err, results) =>{
             if (err) {
@@ -19,7 +19,7 @@ module.exports = {
         });
     },
 
-    readHappiness: (req, res) => {
+    readHappiness: async (req, res) => {
         readHappiness((err, results) => {
             if (err) {
                 console.log(err);
@@ -41,7 +41,7 @@ module.exports = {
         });
     },
 
-    readHappinessByCountry: (req, res) => {
+    readHappinessByCountry: async (req, res) => {
         const Country = req.params.Country;
         readHappinessByCountry(Country, (err, results) => {
             if (err) {
@@ -64,7 +64,7 @@ module.exports = {
         });
     },
 
-    updateHappiness: (req, res) => {
+    updateHappiness: async (req, res) => {
         const body = req.body;
         updateHappiness(body, (err, results) => {
             if (err) {
@@ -87,7 +87,7 @@ module.exports = {
         });
     },
 
-    deleteHappiness: (req, res) => {
+    deleteHappiness: async (req, res) => {
         const data = req.body;
         deleteHappiness(data, (err, results) => {
             if (err) {

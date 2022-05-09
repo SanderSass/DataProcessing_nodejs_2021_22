@@ -13,55 +13,55 @@
             "type": "integer"
         },
         "Area_sq_mi": {
-            "type": "integer"
+            "type": "float"
         },
         "Pop_Density_per_sq_mi": {
-            "type": "number"
+            "type": "float"
         },
         "Coastline_coast_area_ratio": {
-            "type": "number"
+            "type": "float"
         },
         "Net_migration": {
-            "type": "string"
+            "type": "float"
         },
         "Infant_mortality_per_1000_births": {
-            "type": "number"
+            "type": "float"
         },
         "GDP_per_capita": {
             "type": "integer"
         },
         "Literacy": {
-            "type": "number"
+            "type": "float"
         },
         "Phones_per_1000": {
-            "type": "number"
+            "type": "float"
         },
         "Arable": {
-            "type": "string"
+            "type": "float"
         },
         "Crops": {
-            "type": "string"
+            "type": "float"
         },
         "Other": {
-            "type": "number"
+            "type": "float"
         },
         "Climate": {
-            "type": "string"
+            "type": "float"
         },
         "Birthrate": {
-            "type": "number"
+            "type": "float"
         },
         "Deathrate": {
-            "type": "number"
+            "type": "float"
         },
         "Agriculture": {
-            "type": "string"
+            "type": "float"
         },
         "Industry": {
-            "type": "number"
+            "type": "float"
         },
         "Service": {
-            "type": "number"
+            "type": "float"
         }
     }
 }

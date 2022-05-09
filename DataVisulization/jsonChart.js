@@ -1,3 +1,6 @@
+var btn = document.getElementById('btn');
+btn.addEventListener('click', chart);
+
 let freedomCount2012 = freedomCount2013 = freedomCount2014 =
 freedomCount2015 = freedomCount2016 = freedomCount2017 =
 freedom2018 = freedomCount2019 = freedomCount2020 = freedomCount2021 = 0;
@@ -14,7 +17,7 @@ chart();
 
 async function chart(){
   await getFreedomData();
-  await gethappinessData();
+  await getHappinessData();
   await getPopulationData();
   var ctx = document.getElementById('myChartJson').getContext('2d');
   var myChartJson = new Chart(ctx, {
@@ -88,7 +91,7 @@ async function chart(){
     });
 }
 
-async function getfreedomData() {
+async function getFreedomData() {
   await fetch('http://localhost:5500/api/freedom/{$Country}', {
             method: 'GET',
             headers: {
@@ -143,7 +146,7 @@ async function getfreedomData() {
         });
 }
 
-async function getfreedomData() {
+async function getHappinessData() {
   await fetch('http://localhost:5500/api/happiness/{$Country}', {
             method: 'GET',
             headers: {
@@ -198,7 +201,7 @@ async function getfreedomData() {
         });
 }
 
-async function getfreedomData() {
+async function getPopulationData() {
   await fetch('http://localhost:5500/api/population', {
             method: 'GET',
             headers: {
