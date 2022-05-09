@@ -1,10 +1,11 @@
 # Readme for DataProcessing_nodejs_2021_22
 * Organization: **NHL Stenden University of Applied Sciences**
 * Subject: **Data Processing - Resit**
-* Date: **2022, March 1th**
+* Init Date of project: **2022, March 1th**
+* Resit date: **2022, May 9th**
 * Period: **3**
 * Made by **Sander Siimann**
-* Updated: 15/04/2022
+* Updated: 09/05/2022
 
 ## Set up the local API
 1. Download and install latest Xampp. (Apachefriends. (n.d.). *Download XAMPP*)
