@@ -27,6 +27,7 @@
       * npm install node-modules
       * npm install -g nodemon
    3. Change the new package.json as follows below:
+   
       ![Class Diagram](/images/package.png)
    
    4. Run following modules commands to install project dependencies (https://www.tutorialspoint.com/nodejs/nodejs_npm.htm):
