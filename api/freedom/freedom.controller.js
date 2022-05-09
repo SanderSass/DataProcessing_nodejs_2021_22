@@ -1,52 +1,60 @@
-const {insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom} = require("./freedom.service");
+const { insertFreedom, readFreedom, readFreedomByCountry, updateFreedom, deleteFreedom } = require("./freedom.service");
 
 const xml = require("object-to-xml");
 
-const validateJson = require("../../middleware/validateJson");
-const freedomSchema = require("../../schemas/json/freedom.json");
+const validateJson = require("../../middleware/validateJson.js");
+const validateXml = require("../../middleware/validateXml.js");
 
-const validationXML = require("../../middleware/validateXml");
-// const freedomSchemaXsd = require("../../schemas/xsd/freedom.xsd");
-// const xmlSchemaDoc = loadXmlSchema(freedomSchemaXsd);
+const populatioJsonSchema = require("../../schemas/json/freedom.json");
+// const populationXmlSchema = require("../../schemas/xsd/population.xsd");
 
-// function loadXmlSchema(xmlSchemaDoc) {
-//     var schemaPath = path.join(__dirname, '..', 'schemas', xmlSchemaDoc);
-//     var schemaText = fs.readFileSync(schemaPath, 'utf8');
-//     return libxmljs.parseXml(schemaText); 
-// }
-
+//const validXml = validateXml(populationXmlSchema);
 
 module.exports = {
     insertFreedom: (req, res) => {
+
         const body = req.body;
-        insertFreedom(body, (error, results) =>{
-            if (err) {
-                console.log(err);
-                return res.status(400).json({
-                    success: 0,
-                    message: "Bad POST request" + err.code
-                });
-            } else if (!err) {
-                return res.status(201).json({
-                    success: 1,
-                    data: results
-                });
-            }
-            // if (error) {
-            //     next(error);
-            // } else {
-            //     if(req.get('Content-Type') === 'application/json') {
-            //         validateJson(freedomSchema);
-            //     }
-            //     if(req.get('Content-Type') === 'application/xml') {
-                    
-            //     }
-            // }
-        });
+
+        if (req.get('Content-Type') === 'application/json') {
+
+            insertFreedom(body, (error, results) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(400).json({
+                        success: 0,
+                        message: "Bad POST request" + err.code
+                    });
+                } else if (!err) {
+                    return res.status(201).json({
+                        success: 1,
+                        data: results
+                    });
+                }
+            });
+        }
+
+        if (req.get('Content-Type') === 'application/xml') {
+            insertFreedom(body, (error, results) => {
+                if (err) {
+                    console.log(err);
+                    return res.send(xml({
+                        success: 0,
+                        message: "Bad POST request" + err.code
+                    }));
+                } else if (!err) {
+                    return res.send(xml({
+                        success: 1,
+                        freedoms: results
+                    }));
+                }
+            });
+        }
     },
 
+    //GET list of freedom data
     readFreedom: (req, res) => {
-        readFreedom((err, results) => {
+        if (req.get('Content-Type') === 'application/json') {
+            readFreedom((err, results) => {
                 if (err) {
                     console.log(err);
                     return res.status(400).json({
@@ -60,11 +68,34 @@ module.exports = {
                     });
                 } else {
                     return res.status(200).json({
-                    success: 1,
-                    data: results
+                        success: 1,
+                        data: results
                     });
                 }
-        });
+            });
+        }
+        if (req.get('Content-Type') === 'application/xml') {
+            readFreedom((err, results) => {
+                if (err) {
+                    console.log(err);
+                    return res.send(xml({
+                        success: 0,
+                        data: "Bad GET Request: " + err.code
+                    }));
+                } else if (!results) {
+                    return res.send(xml({
+                        success: 0,
+                        message: "Record not found!"
+                    }));
+                } else {
+                    return res.send(xml({
+                        freedoms: {
+                            freedom: results
+                        }
+                    }));
+                }
+            });
+        }
     },
 
     readFreedomByCountry: (req, res) => {
@@ -83,8 +114,8 @@ module.exports = {
                 });
             } else {
                 return res.status(200).json({
-                success: 1,
-                data: results
+                    success: 1,
+                    data: results
                 });
             }
         });
