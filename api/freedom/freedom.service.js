@@ -2,7 +2,7 @@ require("dotenv").config();
 const pool = require("../../config/database");
 
 module.exports = {
-    insertFreedom: (freedom, callBack) =>{
+    insertFreedom: (freedom, callBack) => {
         pool.query(
             "INSERT INTO freedom (Year, ISO_Code, Country, PERSONAL_FREEDOM_Score, ECONOMIC_FREEDOM_Score, HUMAN_FREEDOM_Score, HUMAN_FREEDOM_Rank, HUMAN_FREEDOM_Quartile) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             [freedom.Year,
@@ -22,7 +22,7 @@ module.exports = {
             }
         )
     },
-    readFreedom: callBack =>{
+    readFreedom: callBack => {
         const sql = "SELECT * FROM freedom ORDER BY Year ASC";
         const values = [];
         pool.query(
@@ -37,7 +37,7 @@ module.exports = {
             }
         )
     },
-    readFreedomByCountry: (Country, callBack) =>{
+    readFreedomByCountry: (Country, callBack) => {
         pool.query(
             "SELECT * FROM freedom WHERE Country = ?",
             [Country],

@@ -7,31 +7,31 @@
             "type": "string"
         },
         "Happiness_Rank": {
-            "type": "string"
+            "type": "integer"
         },
         "Happiness_Score": {
-            "type": "number"
+            "type": "float"
         },
         "Economy": {
-            "type": "string"
+            "type": "float"
         },
         "Family": {
-            "type": "string"
+            "type": "float"
         },
         "Health": {
-            "type": "string"
+            "type": "float"
         },
         "Freedom": {
-            "type": "string"
+            "type": "float"
         },
         "Trust": {
-            "type": "string"
+            "type": "float"
         },
         "Generosity": {
-            "type": "string"
+            "type": "float"
         },
         "Year": {
-            "type": "number",
+            "type": "integer",
             "minimum": "2000",
             "maximum": "2022"
         }

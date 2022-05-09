@@ -4,76 +4,73 @@ targetNamespace="https://www.w3schools.com"
 xmlns="https://www.w3schools.com"
 elementFormDefault="qualified">
 
-    <xs:element name="Country">
-        <xs:simpleType>
+    <xs:element name="happiness">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Country" type="xs:string"/>
+                <xs:element name="Happiness_Rank" type="xs:integer"/>
+                <xs:element name="Happiness_Score" type="xs:float"/>
+                <xs:element name="Economy" type="xs:float"/>
+                <xs:element name="Family" type="xs:float"/>
+                <xs:element name="Health" type="xs:float"/>
+                <xs:element name="Freedom" type="xs:float"/>
+                <xs:element name="Trust" type="xs:float"/>
+                <xs:element name="Generosity" type="xs:float"/>
+                <xs:element name="Year" type="Year"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+        <xs:simpleType name="Country">
             <xs:restriction base="xs:string">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Happiness_Rank">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Happiness_Rank">
+            <xs:restriction base="xs:integer">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Happiness_Score">
-        <xs:simpleType>
-            <xs:restriction base="xs:decimal">
+        <xs:simpleType name="Happiness_Score">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Economy">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Economy">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Family">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Family">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Health">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Health">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Freedom">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Freedom">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Trust">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Trust">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Generosity">
-        <xs:simpleType>
-            <xs:restriction base="xs:string">
+        <xs:simpleType name="Generosity">
+            <xs:restriction base="xs:float">
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
-    <xs:element name="Year">
-        <xs:simpleType>
+        <xs:simpleType name="Year">
             <xs:restriction base="xs:integer">
                 <xs:minInclusive value="2000"/>
                 <xs:maxInclusive value="2022"/>
             </xs:restriction>
         </xs:simpleType>
-    </xs:element>
 
 </xs:schema>

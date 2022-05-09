@@ -19,7 +19,7 @@
 
 6. Set up the Node.js in project:
 
-   1. Install Node_modules using this command in terminal: "npm install". This command should install all dependencies / devDependencies (environment variables) which is stated in **package.json**. (Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*).
+   1. Install Node_modules using this command in terminal: "npm install". This command should install all dependencies / devDependencies (environment variables) which is stated in **package.json**. (Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*). -> https://medium.com/the-stickybit/how-to-set-up-a-node-js-server-56664da8f4cf
 
    2. Using this command, it starts the API local server : "npm run start".
 
@@ -34,6 +34,11 @@
 
 ## Testing the API in Postman
 Start to test our endpoints to see if its responds correctly using schemas and respond states.
+
+To able to test the JSON or XML contect, then only one of the headers can be checked, like it shows in the following image:
+
+![Class Diagram](/images/Content%20types.png)
+Example of the image above can run the content of JSON format.
 
    Main endpoints (More info in Swagger documentation):
 
