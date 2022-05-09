@@ -20,17 +20,44 @@
 
 6. Set up the Node.js in project:
 
-   1. Install Node_modules using this command in terminal: "npm install". This command should install all dependencies / devDependencies (environment variables) which is stated in **package.json**. (Web Development Field Guide. (2015, June 25). *Initialize NPM on an existing project*). -> https://medium.com/the-stickybit/how-to-set-up-a-node-js-server-56664da8f4cf
+   1. Remove old package.json and package-lock.json files.
 
-   2. Using this command, it starts the API local server : "npm run start".
+   2. Open terminal in IDE and run list of commands:
+      * npm init
+      * npm install node-modules
+      * npm install -g nodemon
+   3. Change the new package.json as follows below:
+      ![Class Diagram](/images/package.png)
+   
+   4. Run following modules commands to install project dependencies (https://www.tutorialspoint.com/nodejs/nodejs_npm.htm):
+      * npm install ajv --save
+      * npm install ajv-formats --save
+      * npm install body-parser --save
+      * npm install chart.js --save
+      * npm install cors --save
+      * npm install dotenv --save
+      * npm install errorhandler --save
+      * npm install express --save
+      * npm install fs --save
+      * npm install jsonschema --save
+      * npm install libxmljs2 --save
+      * npm install mysql --save
+      * npm install object-to-xml --save
+      * npm install re2 --save
+      * npm install path --save
+      * npm install swagger-jsdoc --save
+      * npm install swagger-ui-express --save
+      * npm install tedious --save
+
+   5. Using this command, it starts the API local server : "npm run start".
 
       Should return:
 
       ![Class Diagram](/images/returnServerupAndDatabaseConnected.png)
 
-   3. if still some modules are missing in the project, then in the terminal run: "npm install **moduleName** --save". And **moduleName** replace with missing module that is stated in the terminal as an error. Only for one dependency the command has a little difference: "npm install --save-dev nodemon". (Npm. (2021, November 9). *npm: nodemon*.)
+   6. if still some modules are missing in the project, then in the terminal run: "npm install **moduleName** --save". And **moduleName** replace with missing module that is stated in the terminal as an error. Only for one dependency the command has a little difference: "npm install --save-dev nodemon". (Npm. (2021, November 9). *npm: nodemon*.)
 
-   4. Then run again in terminal: "npm run start".
+   7. Then run again in terminal: "npm run start".
 
 
 ## Testing the API in Postman
